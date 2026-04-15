@@ -26,7 +26,7 @@ export function AppLayout({ children }: AppLayoutProps) {
       <aside className="hidden md:flex flex-col w-64 border-r border-white/10 bg-black/50 backdrop-blur-xl shrink-0 p-4 sticky top-0 h-screen">
         <div className="flex items-center gap-3 px-4 py-6 mb-4">
           <img
-            src="/cashcraft-logo.png"
+            src="/cashcraft-mark.png"
             alt="CashCraft"
             className="w-8 h-8 object-contain"
             style={{ filter: "invert(1)" }}

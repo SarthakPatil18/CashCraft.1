@@ -33,9 +33,9 @@ export default function Onboarding() {
         {/* Logo */}
         <div className="flex flex-col items-center mb-10">
           <img
-            src="/cashcraft-logo.png"
+            src="/cashcraft-mark.png"
             alt="CashCraft"
-            className="w-12 h-12 object-contain mb-3"
+            className="w-14 h-14 object-contain mb-3"
             style={{ filter: "invert(1)" }}
           />
           <span className="text-lg font-bold tracking-widest text-white/80 uppercase">CashCraft</span>
