@@ -30,6 +30,17 @@ export default function Onboarding() {
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/[0.05] via-black to-black z-0" />
       
       <div className="w-full max-w-md z-10 relative">
+        {/* Logo */}
+        <div className="flex flex-col items-center mb-10">
+          <img
+            src="/cashcraft-logo.png"
+            alt="CashCraft"
+            className="w-12 h-12 object-contain mb-3"
+            style={{ filter: "invert(1)" }}
+          />
+          <span className="text-lg font-bold tracking-widest text-white/80 uppercase">CashCraft</span>
+        </div>
+
         <div className="mb-12 flex justify-between items-center px-2">
           {[1, 2, 3].map((i) => (
             <div key={i} className="flex flex-col items-center gap-2">
