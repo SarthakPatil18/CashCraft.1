@@ -93,7 +93,7 @@ export default function BossBattle() {
               <div className="grid grid-cols-2 gap-4 max-w-md mx-auto mb-12">
                 <div className="glass-card bg-black/80 border-red-500/20 p-4 rounded-2xl">
                   <p className="text-[10px] text-zinc-500 uppercase tracking-widest mb-1">Cost</p>
-                  <p className="text-2xl font-bold text-white">${boss?.amount}</p>
+                  <p className="text-2xl font-bold text-white">₹{boss?.amount}</p>
                 </div>
                 <div className="glass-card bg-black/80 border-red-500/20 p-4 rounded-2xl">
                   <p className="text-[10px] text-zinc-500 uppercase tracking-widest mb-1">Score Risk</p>

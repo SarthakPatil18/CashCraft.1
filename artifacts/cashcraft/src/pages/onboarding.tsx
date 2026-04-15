@@ -53,7 +53,7 @@ export default function Onboarding() {
                 <div className="space-y-2">
                   <Label htmlFor="income" className="text-zinc-500 uppercase tracking-wider text-xs">Monthly Income</Label>
                   <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 text-xl">$</span>
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 text-xl">₹</span>
                     <Input 
                       id="income"
                       type="number"
@@ -82,7 +82,7 @@ export default function Onboarding() {
                 <div className="space-y-2">
                   <Label htmlFor="spending" className="text-zinc-500 uppercase tracking-wider text-xs">Average Monthly Spend</Label>
                   <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 text-xl">$</span>
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 text-xl">₹</span>
                     <Input 
                       id="spending"
                       type="number"
@@ -111,7 +111,7 @@ export default function Onboarding() {
                 <div className="space-y-2">
                   <Label htmlFor="goal" className="text-zinc-500 uppercase tracking-wider text-xs">Target Savings Goal</Label>
                   <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 text-xl">$</span>
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 text-xl">₹</span>
                     <Input 
                       id="goal"
                       type="number"

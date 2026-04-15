@@ -123,11 +123,11 @@ export default function Profile() {
           <div className="space-y-4">
             <div className="flex justify-between items-center py-3 border-b border-white/5">
               <span className="text-zinc-300">Monthly Income</span>
-              <span className="font-bold">${profile?.monthlyIncome.toLocaleString()}</span>
+              <span className="font-bold">₹{profile?.monthlyIncome.toLocaleString()}</span>
             </div>
             <div className="flex justify-between items-center py-3">
               <span className="text-zinc-300">Savings Goal</span>
-              <span className="font-bold">${profile?.savingsGoal.toLocaleString()}</span>
+              <span className="font-bold">₹{profile?.savingsGoal.toLocaleString()}</span>
             </div>
           </div>
           

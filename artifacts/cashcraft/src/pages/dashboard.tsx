@@ -121,7 +121,7 @@ export default function Dashboard() {
             <div className="flex flex-col h-full justify-between relative z-10">
               <div>
                 <p className="text-zinc-400 font-medium tracking-wider text-xs uppercase mb-2">Available Balance</p>
-                <h2 className="text-5xl font-bold tracking-tighter">${summary?.balance.toLocaleString()}</h2>
+                <h2 className="text-5xl font-bold tracking-tighter">₹{summary?.balance.toLocaleString()}</h2>
               </div>
               <div className="flex items-center gap-2 mt-8">
                 <span className="bg-white/10 text-white px-2 py-1 rounded text-xs font-medium flex items-center gap-1">
@@ -164,14 +164,14 @@ export default function Dashboard() {
           >
             <div>
               <p className="text-zinc-400 font-medium tracking-wider text-xs uppercase mb-2">Monthly Spend</p>
-              <h2 className="text-3xl font-bold tracking-tighter">${summary?.monthlySpend.toLocaleString()}</h2>
+              <h2 className="text-3xl font-bold tracking-tighter">₹{summary?.monthlySpend.toLocaleString()}</h2>
             </div>
             
             <div className="space-y-4 mt-6">
               <div>
                 <div className="flex justify-between text-xs mb-1">
                   <span className="text-zinc-400">Savings Target</span>
-                  <span className="text-white font-medium">${summary?.monthlySavings.toLocaleString()}</span>
+                  <span className="text-white font-medium">₹{summary?.monthlySavings.toLocaleString()}</span>
                 </div>
                 <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
                   <div className="h-full bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]" style={{ width: '65%' }}></div>
@@ -203,7 +203,7 @@ export default function Dashboard() {
                 <p className="text-xs text-zinc-400">Last 7 days vs previous week</p>
               </div>
               <div className="text-right">
-                <p className="font-bold text-xl">${chartData?.totalThisWeek.toLocaleString()}</p>
+                <p className="font-bold text-xl">₹{chartData?.totalThisWeek.toLocaleString()}</p>
                 <p className={cn(
                   "text-xs font-medium flex items-center justify-end gap-1",
                   (chartData?.weekOverWeekChange || 0) < 0 ? "text-white" : "text-red-400"
@@ -224,7 +224,7 @@ export default function Dashboard() {
                     </linearGradient>
                   </defs>
                   <XAxis dataKey="date" axisLine={false} tickLine={false} tick={{ fill: '#71717a', fontSize: 10 }} />
-                  <YAxis axisLine={false} tickLine={false} tick={{ fill: '#71717a', fontSize: 10 }} tickFormatter={(val) => `$${val}`} />
+                  <YAxis axisLine={false} tickLine={false} tick={{ fill: '#71717a', fontSize: 10 }} tickFormatter={(val) => `₹${val}`} />
                   <Tooltip 
                     contentStyle={{ backgroundColor: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px' }}
                     itemStyle={{ color: '#fff' }}
@@ -267,7 +267,7 @@ export default function Dashboard() {
                   </div>
                   <div className="text-right">
                     <p className={cn("text-sm font-bold", tx.type === 'credit' ? "text-white" : "")}>
-                      {tx.type === 'debit' ? '-' : '+'}${tx.amount}
+                      {tx.type === 'debit' ? '-' : '+'}₹{tx.amount}
                     </p>
                     <p className={cn(
                       "text-[10px] font-medium px-1.5 py-0.5 rounded inline-block mt-1",

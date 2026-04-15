@@ -66,7 +66,7 @@ export default function Simulation() {
                     <div>
                       <Label className="text-xs uppercase tracking-wider text-zinc-500">Purchase Amount</Label>
                       <div className="relative mt-2">
-                        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 text-xl">$</span>
+                        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 text-xl">₹</span>
                         <Input 
                           type="number" 
                           required
@@ -144,14 +144,14 @@ export default function Simulation() {
                         Disciplined Path
                       </div>
                       
-                      <h2 className="text-3xl font-bold tracking-tight mb-2">You invest the ${amount}</h2>
+                      <h2 className="text-3xl font-bold tracking-tight mb-2">You invest the ₹{amount}</h2>
                       <p className="text-zinc-400">By skipping this purchase, your capital works for you.</p>
                     </div>
 
                     <div className="space-y-6 mt-8 relative z-10">
                       <div className="p-4 rounded-2xl bg-black/50 border border-white/5">
                         <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">1 Year Projection</p>
-                        <p className="text-2xl font-bold text-white">+${runSimulation.data?.disciplined.savingsIn1Year}</p>
+                        <p className="text-2xl font-bold text-white">+₹{runSimulation.data?.disciplined.savingsIn1Year}</p>
                       </div>
                       
                       <div className="p-4 rounded-2xl bg-black/50 border border-white/5">
@@ -184,7 +184,7 @@ export default function Simulation() {
                     <div className="space-y-6 mt-8 relative z-10">
                       <div className="p-4 rounded-2xl bg-black/50 border border-red-500/10">
                         <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">Lost Opportunity Cost (1Y)</p>
-                        <p className="text-2xl font-bold text-zinc-300">-${runSimulation.data?.chaotic.savingsIn1Year}</p>
+                        <p className="text-2xl font-bold text-zinc-300">-₹{runSimulation.data?.chaotic.savingsIn1Year}</p>
                       </div>
                       
                       <div className="p-4 rounded-2xl bg-black/50 border border-red-500/10">
