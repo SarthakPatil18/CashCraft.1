@@ -11,28 +11,32 @@ const timelines = [
 const FutureTimeline = () => {
   const [selectedDay, setSelectedDay] = useState(0);
   const data = timelines[selectedDay];
-
   const maxVal = Math.max(data.zen, data.current, data.chaos, 1);
+
+  const bars = [
+    { label: "Zen You", value: data.zen, color: "bg-neon-green", dot: "bg-neon-green" },
+    { label: "Current You", value: data.current, color: "gradient-primary", dot: "bg-primary" },
+    { label: "Chaos You", value: data.chaos, color: "bg-neon-red", dot: "bg-neon-red" },
+  ];
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.3 }}
-      className="gradient-card rounded-2xl border border-border p-6"
+      className="glass-card rounded-2xl p-6"
     >
-      <h2 className="font-display text-lg font-bold text-foreground mb-4">🔮 Future Simulation</h2>
+      <h2 className="font-display text-sm font-bold text-foreground tracking-wide mb-5">FUTURE SIMULATION</h2>
 
-      {/* Timeline slider */}
-      <div className="flex gap-2 mb-6">
+      <div className="flex gap-1.5 mb-6">
         {timelines.map((t, i) => (
           <button
             key={t.day}
             onClick={() => setSelectedDay(i)}
-            className={`flex-1 py-2 rounded-lg font-display text-xs font-bold transition-all ${
+            className={`flex-1 py-2 rounded-lg font-display text-[10px] font-bold tracking-wider transition-all ${
               selectedDay === i
-                ? "gradient-primary text-primary-foreground glow-primary"
-                : "bg-muted text-muted-foreground hover:bg-muted/80"
+                ? "gradient-primary text-primary-foreground"
+                : "bg-muted/40 text-muted-foreground hover:bg-muted/60"
             }`}
           >
             Day {t.day}
@@ -40,19 +44,17 @@ const FutureTimeline = () => {
         ))}
       </div>
 
-      {/* Bars */}
       <div className="space-y-4">
-        {[
-          { label: "🟢 Zen You", value: data.zen, color: "bg-neon-green", glowClass: "glow-neon-green" },
-          { label: "⚖️ Current You", value: data.current, color: "gradient-primary", glowClass: "glow-primary" },
-          { label: "🔴 Chaos You", value: data.chaos, color: "bg-neon-red", glowClass: "glow-neon-red" },
-        ].map((item) => (
+        {bars.map((item) => (
           <div key={item.label}>
-            <div className="flex justify-between text-sm mb-1">
-              <span className="text-muted-foreground">{item.label}</span>
+            <div className="flex justify-between text-xs mb-1.5">
+              <span className="text-muted-foreground flex items-center gap-1.5">
+                <span className={`w-1.5 h-1.5 rounded-full ${item.dot}`} />
+                {item.label}
+              </span>
               <span className="font-display font-bold text-foreground">₹{item.value.toLocaleString()}</span>
             </div>
-            <div className="h-3 bg-muted rounded-full overflow-hidden">
+            <div className="h-2 bg-muted/40 rounded-full overflow-hidden">
               <motion.div
                 className={`h-full rounded-full ${item.color}`}
                 initial={{ width: 0 }}
@@ -63,10 +65,6 @@ const FutureTimeline = () => {
           </div>
         ))}
       </div>
-
-      <p className="text-xs text-muted-foreground mt-4 text-center font-display">
-        Slide through time to see your financial multiverse ✨
-      </p>
     </motion.div>
   );
 };

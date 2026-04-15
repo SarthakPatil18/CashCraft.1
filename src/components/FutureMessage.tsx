@@ -24,28 +24,22 @@ const FutureMessage = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.5 }}
-      className="gradient-card rounded-2xl border border-primary/20 p-5 relative overflow-hidden"
+      className="glass-card rounded-2xl p-5 relative overflow-hidden"
+      style={{ borderColor: 'hsl(var(--primary) / 0.15)' }}
     >
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute bottom-0 right-0 w-40 h-40 rounded-full bg-primary blur-[80px]" />
-      </div>
+      <div className="absolute bottom-0 right-0 w-32 h-32 rounded-full bg-primary/4 blur-[60px]" />
 
       <div className="flex items-start gap-3 z-10 relative">
-        <motion.div
-          animate={{ scale: [1, 1.1, 1] }}
-          transition={{ duration: 3, repeat: Infinity }}
-          className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center text-lg flex-shrink-0"
-        >
+        <div className="w-9 h-9 rounded-xl gradient-primary flex items-center justify-center text-sm flex-shrink-0">
           👻
-        </motion.div>
-        <div>
-          <p className="text-xs font-display text-primary mb-1 tracking-wider">MESSAGE FROM FUTURE YOU</p>
+        </div>
+        <div className="min-w-0">
+          <p className="text-[10px] font-display text-primary/70 mb-1.5 tracking-[0.2em] uppercase">Future You</p>
           <motion.p
             key={msgIndex}
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            className="text-sm text-foreground/90 leading-relaxed"
+            className="text-sm text-foreground/80 leading-relaxed"
           >
             "{messages[msgIndex]}"
           </motion.p>

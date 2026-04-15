@@ -10,63 +10,53 @@ import FutureScore from "@/components/FutureScore";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* Background grid */}
-      <div className="fixed inset-0 opacity-[0.03]" style={{
-        backgroundImage: "linear-gradient(hsl(var(--primary) / 0.3) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary) / 0.3) 1px, transparent 1px)",
-        backgroundSize: "60px 60px",
+      {/* Subtle grid */}
+      <div className="fixed inset-0 opacity-[0.02]" style={{
+        backgroundImage: "linear-gradient(hsl(var(--primary) / 0.2) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary) / 0.2) 1px, transparent 1px)",
+        backgroundSize: "80px 80px",
       }} />
 
-      {/* Top ambient glow */}
-      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-primary/5 blur-[150px] rounded-full" />
+      {/* Ambient glows */}
+      <div className="fixed top-[-200px] left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary/4 blur-[200px] rounded-full" />
+      <div className="fixed bottom-[-200px] right-[-100px] w-[500px] h-[400px] bg-neon-blue/3 blur-[180px] rounded-full" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 py-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-10">
         {/* Header */}
         <motion.header
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-10"
+          transition={{ duration: 0.8 }}
+          className="text-center mb-12"
         >
-          <div className="flex items-center justify-center gap-3 mb-2">
-            <motion.span
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-              className="text-3xl"
-            >
-              💰
-            </motion.span>
-            <h1 className="font-display text-3xl md:text-4xl font-black text-glow text-foreground tracking-wider">
+          <div className="inline-flex items-center gap-4 mb-3">
+            <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary/40" />
+            <h1 className="font-display text-2xl md:text-3xl font-black tracking-[0.2em] text-foreground">
               CASHCRAFT
             </h1>
-            <motion.span
-              animate={{ rotate: [0, -360] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-              className="text-3xl"
-            >
-              ⚡
-            </motion.span>
+            <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary/40" />
           </div>
-          <p className="text-muted-foreground text-sm font-display tracking-widest">
-            CRAFT YOUR FUTURE • ONE DECISION AT A TIME
+          <p className="text-muted-foreground text-xs font-display tracking-[0.3em] uppercase">
+            Craft your future • One decision at a time
           </p>
         </motion.header>
 
         {/* Main grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
           {/* Left column */}
-          <div className="space-y-6">
+          <div className="lg:col-span-3 space-y-5">
             <AvatarPanel />
             <FutureScore />
           </div>
 
           {/* Center column */}
-          <div className="space-y-6">
+          <div className="lg:col-span-5 space-y-5">
             <BalanceOrb />
             <BossFight />
             <FutureMessage />
           </div>
 
           {/* Right column */}
-          <div className="space-y-6">
+          <div className="lg:col-span-4 space-y-5">
             <QuestBoard />
             <FutureTimeline />
           </div>
@@ -76,10 +66,11 @@ const Index = () => {
         <motion.footer
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="text-center mt-12 pb-8"
+          transition={{ delay: 1.2 }}
+          className="text-center mt-16 pb-8"
         >
-          <p className="text-xs text-muted-foreground font-display tracking-wider">
+          <div className="h-px w-32 mx-auto bg-gradient-to-r from-transparent via-border to-transparent mb-6" />
+          <p className="text-xs text-muted-foreground/60 tracking-wide max-w-md mx-auto leading-relaxed">
             "People don't fail at saving money because they lack tools… they fail because it's boring."
           </p>
         </motion.footer>
