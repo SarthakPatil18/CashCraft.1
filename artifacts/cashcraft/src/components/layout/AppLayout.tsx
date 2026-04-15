@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "wouter";
-import { LayoutDashboard, Target, Activity, MessageSquare, User, TrendingUp } from "lucide-react";
+import { LayoutDashboard, Target, Activity, MessageSquare, User, TrendingUp, Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface AppLayoutProps {
@@ -14,6 +14,7 @@ export function AppLayout({ children }: AppLayoutProps) {
     { href: "/dashboard", label: "Command Center", icon: LayoutDashboard },
     { href: "/quests", label: "Money Quests", icon: Target },
     { href: "/simulation", label: "Simulations", icon: TrendingUp },
+    { href: "/world", label: "Future World", icon: Globe },
     { href: "/boss", label: "Boss Battle", icon: Activity },
     { href: "/messages", label: "Messages", icon: MessageSquare },
     { href: "/profile", label: "Profile", icon: User },

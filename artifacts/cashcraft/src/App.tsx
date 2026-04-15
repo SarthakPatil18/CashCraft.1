@@ -11,6 +11,7 @@ import Quests from "@/pages/quests";
 import BossBattle from "@/pages/boss";
 import Messages from "@/pages/messages";
 import Profile from "@/pages/profile";
+import FutureWorld from "@/pages/future-world";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ function Router() {
       <Route path="/boss" component={BossBattle} />
       <Route path="/messages" component={Messages} />
       <Route path="/profile" component={Profile} />
+      <Route path="/world" component={FutureWorld} />
       <Route component={NotFound} />
     </Switch>
   );
