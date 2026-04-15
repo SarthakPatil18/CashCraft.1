@@ -1,22 +1,35 @@
 openapi: 3.1.0
 info:
-  # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: CashCraft API specification
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: user
+    description: User profile and settings
+  - name: dashboard
+    description: Dashboard and financial overview
+  - name: transactions
+    description: Financial transactions
+  - name: quests
+    description: Money quests and missions
+  - name: simulation
+    description: Spend simulation
+  - name: messages
+    description: Future self messages
+  - name: boss
+    description: Boss battle mode
+
 paths:
   /healthz:
     get:
       operationId: healthCheck
       tags: [health]
       summary: Health check
-      description: Returns server health status
       responses:
         "200":
           description: Healthy
@@ -24,6 +37,186 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  /user/profile:
+    get:
+      operationId: getUserProfile
+      tags: [user]
+      summary: Get user profile
+      responses:
+        "200":
+          description: User profile
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+
+  /dashboard/summary:
+    get:
+      operationId: getDashboardSummary
+      tags: [dashboard]
+      summary: Get dashboard summary
+      responses:
+        "200":
+          description: Dashboard summary with balance, score, streaks
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DashboardSummary"
+
+  /dashboard/spending-chart:
+    get:
+      operationId: getSpendingChart
+      tags: [dashboard]
+      summary: Get spending chart data (last 7 days)
+      responses:
+        "200":
+          description: Spending chart data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SpendingChart"
+
+  /transactions:
+    get:
+      operationId: listTransactions
+      tags: [transactions]
+      summary: List recent transactions
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+      responses:
+        "200":
+          description: List of transactions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Transaction"
+
+  /quests:
+    get:
+      operationId: listQuests
+      tags: [quests]
+      summary: List all quests
+      responses:
+        "200":
+          description: List of quests
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Quest"
+
+  /quests/{questId}/complete:
+    post:
+      operationId: completeQuest
+      tags: [quests]
+      summary: Mark a quest as complete
+      parameters:
+        - name: questId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Quest completion result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/QuestCompletionResult"
+
+  /simulation/run:
+    post:
+      operationId: runSimulation
+      tags: [simulation]
+      summary: Run a spend simulation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SimulationRequest"
+      responses:
+        "200":
+          description: Simulation result with disciplined and chaotic outcomes
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SimulationResult"
+
+  /messages/future:
+    get:
+      operationId: getFutureMessages
+      tags: [messages]
+      summary: Get messages from future self
+      responses:
+        "200":
+          description: Future self messages
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/FutureMessage"
+
+  /boss/current:
+    get:
+      operationId: getCurrentBoss
+      tags: [boss]
+      summary: Get current boss battle (if any risky spending pending)
+      responses:
+        "200":
+          description: Current boss data or null
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BossBattle"
+
+  /boss/{bossId}/fight:
+    post:
+      operationId: fightBoss
+      tags: [boss]
+      summary: Fight the boss (cancel the risky spending)
+      parameters:
+        - name: bossId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Boss fight result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BossFightResult"
+
+  /boss/{bossId}/surrender:
+    post:
+      operationId: surrenderToBoss
+      tags: [boss]
+      summary: Give in to the boss (proceed with risky spending)
+      parameters:
+        - name: bossId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Surrender result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BossFightResult"
+
 components:
   schemas:
     HealthStatus:
@@ -31,6 +224,265 @@ components:
       properties:
         status:
           type: string
-      required:
-        - status
+      required: [status]
 
+    UserProfile:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        level:
+          type: integer
+        xp:
+          type: integer
+        xpToNextLevel:
+          type: integer
+        futureScore:
+          type: integer
+        streak:
+          type: integer
+        avatarStage:
+          type: string
+          enum: [novice, apprentice, journeyman, master, legend]
+        monthlyIncome:
+          type: number
+        savingsGoal:
+          type: number
+        joinedAt:
+          type: string
+          format: date-time
+      required: [id, name, level, xp, xpToNextLevel, futureScore, streak, avatarStage, monthlyIncome, savingsGoal, joinedAt]
+
+    DashboardSummary:
+      type: object
+      properties:
+        balance:
+          type: number
+        futureScore:
+          type: integer
+        streak:
+          type: integer
+        xp:
+          type: integer
+        level:
+          type: integer
+        monthlySpend:
+          type: number
+        monthlySavings:
+          type: number
+        savingsRate:
+          type: number
+        topSpendCategory:
+          type: string
+        pendingQuestsCount:
+          type: integer
+        completedQuestsCount:
+          type: integer
+        scoreChange:
+          type: integer
+        avatarStage:
+          type: string
+      required: [balance, futureScore, streak, xp, level, monthlySpend, monthlySavings, savingsRate, topSpendCategory, pendingQuestsCount, completedQuestsCount, scoreChange, avatarStage]
+
+    SpendingChartPoint:
+      type: object
+      properties:
+        date:
+          type: string
+        amount:
+          type: number
+        category:
+          type: string
+      required: [date, amount, category]
+
+    SpendingChart:
+      type: object
+      properties:
+        points:
+          type: array
+          items:
+            $ref: "#/components/schemas/SpendingChartPoint"
+        totalThisWeek:
+          type: number
+        totalLastWeek:
+          type: number
+        weekOverWeekChange:
+          type: number
+      required: [points, totalThisWeek, totalLastWeek, weekOverWeekChange]
+
+    Transaction:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        amount:
+          type: number
+        category:
+          type: string
+        type:
+          type: string
+          enum: [debit, credit]
+        date:
+          type: string
+          format: date-time
+        impactScore:
+          type: integer
+      required: [id, description, amount, category, type, date, impactScore]
+
+    Quest:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        xpReward:
+          type: integer
+        progress:
+          type: integer
+        target:
+          type: integer
+        completed:
+          type: boolean
+        category:
+          type: string
+          enum: [saving, spending, streak, challenge]
+        difficulty:
+          type: string
+          enum: [easy, medium, hard]
+        expiresAt:
+          type: string
+          format: date-time
+      required: [id, title, description, xpReward, progress, target, completed, category, difficulty, expiresAt]
+
+    QuestCompletionResult:
+      type: object
+      properties:
+        success:
+          type: boolean
+        xpEarned:
+          type: integer
+        newLevel:
+          type: integer
+        newXp:
+          type: integer
+        leveledUp:
+          type: boolean
+        message:
+          type: string
+      required: [success, xpEarned, newLevel, newXp, leveledUp, message]
+
+    SimulationRequest:
+      type: object
+      properties:
+        description:
+          type: string
+        amount:
+          type: number
+        category:
+          type: string
+      required: [description, amount, category]
+
+    SimulationScenario:
+      type: object
+      properties:
+        futureBalance:
+          type: number
+        futureScore:
+          type: integer
+        scoreImpact:
+          type: integer
+        savingsIn3Months:
+          type: number
+        savingsIn1Year:
+          type: number
+        message:
+          type: string
+        avatarStage:
+          type: string
+        milestones:
+          type: array
+          items:
+            type: string
+      required: [futureBalance, futureScore, scoreImpact, savingsIn3Months, savingsIn1Year, message, avatarStage, milestones]
+
+    SimulationResult:
+      type: object
+      properties:
+        disciplined:
+          $ref: "#/components/schemas/SimulationScenario"
+        chaotic:
+          $ref: "#/components/schemas/SimulationScenario"
+        riskLevel:
+          type: string
+          enum: [low, medium, high, critical]
+        isBossBattle:
+          type: boolean
+      required: [disciplined, chaotic, riskLevel, isBossBattle]
+
+    FutureMessage:
+      type: object
+      properties:
+        id:
+          type: string
+        from:
+          type: string
+          enum: [disciplined, chaotic, neutral]
+        subject:
+          type: string
+        body:
+          type: string
+        tone:
+          type: string
+          enum: [encouragement, warning, celebration, urgent]
+        date:
+          type: string
+          format: date-time
+        read:
+          type: boolean
+      required: [id, from, subject, body, tone, date, read]
+
+    BossBattle:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        amount:
+          type: number
+        category:
+          type: string
+        scoreRisk:
+          type: integer
+        savingsImpact:
+          type: number
+        tier:
+          type: string
+          enum: [miniboss, boss, megaboss]
+        active:
+          type: boolean
+      required: [id, name, description, amount, category, scoreRisk, savingsImpact, tier, active]
+
+    BossFightResult:
+      type: object
+      properties:
+        victory:
+          type: boolean
+        message:
+          type: string
+        scoreChange:
+          type: integer
+        xpChange:
+          type: integer
+        newScore:
+          type: integer
+      required: [victory, message, scoreChange, xpChange, newScore]

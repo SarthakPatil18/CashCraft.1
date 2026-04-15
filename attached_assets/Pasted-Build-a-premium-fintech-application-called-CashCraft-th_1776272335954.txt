@@ -1,0 +1,182 @@
+Build a premium fintech application called **CashCraft** that works seamlessly on both **mobile and desktop (responsive web app)**.
+
+The experience should feel like a high-end product (Apple-level polish) with a black-and-white minimalist design and smooth animations.
+
+---
+
+### 🎯 Core Concept
+
+CashCraft is a gamified finance app where users interact with:
+
+* Present Self
+* Disciplined Future Self
+* Chaotic Future Self
+
+Every financial action updates a **Future Score** and shows simulated consequences.
+
+---
+
+### 🎨 Design System
+
+* Colors: Black (#000000), White (#FFFFFF), Greys
+* Accent: subtle glow (white/blue)
+* Style: minimal, glassmorphism, soft shadows
+* Typography: modern (Inter / SF Pro style)
+* Animations: smooth, premium, non-flashy
+
+---
+
+### 📱📺 Responsive Layout (VERY IMPORTANT)
+
+#### Mobile:
+
+* Bottom navigation bar
+* Full-screen immersive experience
+* Swipe interactions
+* Focus on simplicity
+
+#### Desktop:
+
+* Sidebar navigation (left side)
+* Multi-panel layout:
+
+  * Left: Navigation
+  * Center: Main content
+  * Right: Insights / Future projections
+* Hover effects + micro-interactions
+* Keyboard-friendly navigation
+* Wider dashboards with more data visibility
+
+Ensure seamless responsiveness between screen sizes.
+
+---
+
+### 🧭 Navigation
+
+#### Mobile:
+
+* Bottom tabs:
+
+  * Home
+  * Quests
+  * Insights
+  * Profile
+
+#### Desktop:
+
+* Sidebar:
+
+  * Dashboard
+  * Money Quests
+  * Simulations
+  * Analytics
+  * Settings
+
+---
+
+### 📊 Main Screens
+
+#### 1. Dashboard (Home)
+
+* Balance
+* Future Score (animated circular meter)
+* Streaks
+* Avatar of future self (visually evolving)
+* Desktop: add graphs + financial insights panel
+
+---
+
+#### 2. Spend Simulation (Core Feature)
+
+* Split-screen simulation:
+
+  * Disciplined vs Chaotic future
+* Animated timeline preview
+* Buttons:
+
+  * Proceed
+  * Reconsider
+* Desktop: show both scenarios side-by-side with richer data
+
+---
+
+#### 3. Money Quests
+
+* Daily missions with progress bars
+* XP, streak system
+* Reward animations
+
+---
+
+#### 4. Boss Battle Mode
+
+* Trigger risky spending alerts
+* Dramatic UI shift (dark pulse effect)
+* Show consequences clearly
+* Options:
+
+  * Fight (cancel)
+  * Give In
+
+---
+
+#### 5. Future Messages
+
+* Messages from future self (dynamic)
+* Emotional tone:
+
+  * Encouragement / warning
+
+---
+
+### 🧠 Features
+
+* AI-based spending analysis (mocked)
+* Future Score system
+* Avatar evolution
+* Gamification (XP, streaks, levels)
+
+---
+
+### 🖥 Desktop Enhancements
+
+* Data visualizations (charts, trends)
+* Comparison panels (past vs projected future)
+* Drag-and-drop financial planning (optional UI)
+* Hover tooltips for insights
+
+---
+
+### ⚙️ Technical Requirements
+
+* Fully responsive (mobile + tablet + desktop)
+* Component-based architecture
+* Smooth animations (60fps feel)
+* Clean UI hierarchy
+* Use mock data
+* Include onboarding:
+
+  * Income
+  * Spending habits
+  * Goals
+
+---
+
+### ✨ Experience Goal
+
+* Feels premium, minimal, addictive
+* More like a **financial command center on desktop**
+* More like a **personal finance companion on mobile**
+* Emotional + intelligent, not childish
+
+---
+
+### 🚀 Output Required
+
+* Fully responsive UI
+* Desktop + mobile layouts
+* Navigation system for both
+* Interactive components
+* Smooth transitions
+
+Make it feel like a product used by serious people—but designed so well it becomes addictive.
