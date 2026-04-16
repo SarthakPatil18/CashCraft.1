@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/CashCraft.1/", // 👈 THIS FIXES YOUR BLANK SITE
+ base: "/",  // ← or just delete the base line entirely // 👈 THIS FIXES YOUR BLANK SITE
 
   server: {
     host: "::",
